@@ -10,14 +10,14 @@ export function getPostSlugs() {
     return fs.readdirSync(postsDirectory);
 }
 
-export function getPostBySlug(slug: string) {
-    const realSlug = slug.replace(/\.md$/, "");
-    const fullPath = join(postsDirectory, `${realSlug}.md`);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    const {data, content} = matter(fileContents);
-
-    return {...data, slug: realSlug, content} as Post;
-}
+// export function getPostBySlug(slug: string) {
+//     const realSlug = slug.replace(/\.md$/, "");
+//     const fullPath = join(postsDirectory, `${realSlug}.md`);
+//     const fileContents = fs.readFileSync(fullPath, "utf8");
+//     const {data, content} = matter(fileContents);
+//
+//     return {...data, slug: realSlug, content} as Post;
+// }
 
 // export function getAllPosts(): Post[] {
 //     const slugs = getPostSlugs();
@@ -38,9 +38,9 @@ export async function getAllPosts() {
 }
 
 
-export async function getPostBySlugCustom(slug: string) {
+export async function getPostBySlug(slug: string) {
     const realSlug = slug.replace(/\.md$/, "");
-    const fullPath = join(postsDirectory, `${realSlug}.md`);
+    // const fullPath = join(postsDirectory, `${realSlug}.md`);
     // console.log('sırasıyla slug ve fullpath', slug, fullPath);
     const result = await blogService.getBySlug(slug);
     if (result.status === 200) {

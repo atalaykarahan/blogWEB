@@ -20,7 +20,7 @@ class BlogService {
 
     //#region GET BY SLUG
     async getBySlug(slug: string) {
-        return await axios.get(`/blogs/blog/${slug}`,);
+        return await axios.get(`/blogs/slug/${slug}`,);
     };
 
     //#endregion

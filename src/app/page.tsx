@@ -5,17 +5,9 @@ import {MoreStories} from "@/app/_components/more-stories";
 import {getAllPosts} from "@/lib/api";
 
 export default async function Index() {
-    // const allPosts = getAllPosts();
-    // const heroPost = allPosts[0];
-    // const morePosts = allPosts.slice(1);
-
     const allPosts = await getAllPosts();
     const heroPost = allPosts[0];
     const morePosts = allPosts.slice(1);
-
-    // const customHeroPost = customPosts[0];
-
-    // console.log('bengen gelen yanıt ise şu şekilde;', customHeroPost);
 
     return (
         <main>
@@ -27,7 +19,7 @@ export default async function Index() {
                     date={heroPost.updatedAt}
                     slug={heroPost.blog_slug}
                 />
-                {/*{morePosts.length > 0 && <MoreStories posts={morePosts} />}*/}
+                {morePosts.length > 0 && <MoreStories posts={morePosts}/>}
             </Container>
         </main>
     );

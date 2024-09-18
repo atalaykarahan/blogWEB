@@ -17,7 +17,6 @@ export function HeroPost({
   date,
   slug,
 }: Props) {
-  slug = 'hello-world'
   return (
     <section>
       <div className="mb-8 md:mb-16">
