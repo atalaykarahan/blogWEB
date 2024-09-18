@@ -13,7 +13,7 @@ class BlogService {
 
     //#region GET ALL PUBLISHED BLOGS
     async getAllPublishedBlogs() {
-        return await axios.get(`/blogs/published`,);
+        return await axios.get(`/blogs/homepage`,);
     };
 
     //#endregion
