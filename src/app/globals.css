@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Inter Variable';
+    src: url('/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+    font-weight: 100 900; /* Fontun desteklediği ağırlıkları belirtir */
+    font-stretch: 75% 125%; /* Fontun desteklediği genişlik aralıklarını belirtir (isteğe bağlı) */
+    font-display: swap; /* Fontun hemen görüntülenmesini sağlar */
+}
