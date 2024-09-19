@@ -6,6 +6,7 @@ import {getAllPosts} from "@/lib/api";
 
 export default async function Index() {
     const allPosts = await getAllPosts();
+    console.log(allPosts)
     const heroPost = allPosts[0];
     const morePosts = allPosts.slice(1);
 

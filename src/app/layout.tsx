@@ -11,9 +11,6 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: `Atalay Karahan`,
-  openGraph: {
-    images: [HOME_OG_IMAGE_URL],
-  },
 };
 
 export default function RootLayout({
