@@ -6,6 +6,11 @@ import {getAllPosts} from "@/lib/api";
 
 export default async function Index() {
     const allPosts = await getAllPosts();
+
+    if (!allPosts || allPosts.length === 0) {
+        return <p>Henüz blog yazısı bulunmuyor.</p>;
+    }
+
     const heroPost = allPosts[0];
     const morePosts = allPosts.slice(1);
 
