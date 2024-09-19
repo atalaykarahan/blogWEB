@@ -10,6 +10,8 @@
     "classnames": "^2.5.1",
     "date-fns": "^3.6.0",
     "gray-matter": "^4.0.3",
+    "markdown-it": "^14.1.0",
+    "markdown-it-ins": "^4.0.0",
     "next": "latest",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -17,6 +19,7 @@
     "remark-html": "^16.0.1"
   },
   "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^20.14.8",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

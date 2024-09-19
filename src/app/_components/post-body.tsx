@@ -1,16 +1,18 @@
-import markdownStyles from "./markdown-styles.module.css";
+import MarkdownIt from 'markdown-it';
 
+
+const mdParser = new MarkdownIt();
+mdParser.use(require('markdown-it-ins'));
 type Props = {
-  content: string;
+    content: string;
 };
 
-export function PostBody({ content }: Props) {
-  return (
-    <div className="max-w-2xl mx-auto">
-      <div
-        className={markdownStyles["markdown"]}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
-    </div>
-  );
+export function PostBody({content}: Props) {
+    const renderedContent = mdParser.render(content);
+
+    return (
+        <div className="max-w-2xl mx-auto">
+            <div dangerouslySetInnerHTML={{__html: renderedContent}}/>
+        </div>
+    );
 }
