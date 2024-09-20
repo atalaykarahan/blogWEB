@@ -1,25 +1,16 @@
-import {notFound} from "next/navigation";
-import {getAllPosts, getPostBySlug} from "@/lib/api";
 import Container from "@/app/_components/container";
 import Header from "@/app/_components/header";
-import {PostBody} from "@/app/_components/post-body";
-import {PostHeader} from "@/app/_components/post-header";
+import Blog from "@/app/posts/blog";
+import {notFound} from "next/navigation";
 
 export default async function Post({params}: Params) {
-    const post: any = await getPostBySlug(params.slug);
-    if (!post) {
-        return notFound();
-    }
+
     return (
         <main>
             <Container>
                 <Header/>
                 <article className="mb-32">
-                    <PostHeader
-                        title={post.blog_title}
-                        date={post.updatedAt}
-                    />
-                    <PostBody content={post.blog_description}/>
+                    <Blog slug={params.slug}/>
                 </article>
             </Container>
         </main>
@@ -33,13 +24,21 @@ type Params = {
 };
 
 export async function generateMetadata({params}: Params) {
-    const post = await getPostBySlug(params.slug);
+    const response: any = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs/slug/${params.slug}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        credentials: "include",
+    });
+
+    const post = await response.json();
 
     if (!post) {
         return notFound();
     }
 
-    const title = `${post.blog_title} | Next.js Blog Example with Atalay Karahan`;
+    const title = `${post.blog_title} | Atalay Karahan`;
 
     return {
         title,
@@ -50,10 +49,19 @@ export async function generateMetadata({params}: Params) {
     };
 }
 
-export async function generateStaticParams() {
-    const posts = await getAllPosts();
 
-    return posts.map((post: any) => ({
-        slug: post.blog_slug,
-    }));
-}
+// export async function generateStaticParams() {
+//     const response: any = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs/homepage`, {
+//         method: "GET",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         credentials: "include",
+//     });
+//
+//     const posts = await response.json();
+//
+//     return posts.map((post: any) => ({
+//         slug: post.blog_slug,
+//     }));
+// }

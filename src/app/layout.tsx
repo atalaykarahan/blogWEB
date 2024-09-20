@@ -10,7 +10,7 @@ import "./globals.css";
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: `Atalay Karahan`,
+    title: `Koscheiblog`,
 };
 
 export default function RootLayout({

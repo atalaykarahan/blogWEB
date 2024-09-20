@@ -1,30 +1,14 @@
 import Container from "@/app/_components/container";
-import {HeroPost} from "@/app/_components/hero-post";
 import {Intro} from "@/app/_components/intro";
-import {MoreStories} from "@/app/_components/more-stories";
-import {getAllPosts} from "@/lib/api";
+import HomeScreen from "@/app/home-screen";
 
 export default async function Index() {
-    const allPosts = await getAllPosts();
-
-    if (!allPosts || allPosts.length === 0) {
-        return <p>Henüz blog yazısı bulunmuyor.</p>;
-    }
-
-    const heroPost = allPosts[0];
-    const morePosts = allPosts.slice(1);
 
     return (
         <main>
             <Container>
                 <Intro/>
-                <HeroPost
-                    title={heroPost.blog_title}
-                    coverImage={heroPost.blog_cover_image ?? '/assets/blog/hello-world/cover.jpg'}
-                    date={heroPost.updatedAt}
-                    slug={heroPost.blog_slug}
-                />
-                {morePosts.length > 0 && <MoreStories posts={morePosts}/>}
+                <HomeScreen/>
             </Container>
         </main>
     );
